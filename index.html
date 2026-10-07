@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>親子資訊服務 ‧ 活動報名入口</title>
+  <meta name="description" content="信義國小親子資訊服務與活動線上報名入口網站，提供數位學習資源與即時活動報名服務。">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Noto Sans TC & Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'Quicksand', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              yellow: '#FFCA28',
+              orange: '#FF7043',
+              blue: '#0288D1',
+              green: '#4CAF50',
+              cream: '#FFFBEA',
+            }
+          },
+          boxShadow: {
+            'playful': '0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 6px 12px -4px rgba(0, 0, 0, 0.04)',
+            'playful-hover': '0 20px 30px -10px rgba(0, 0, 0, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+    .animate-float {
+      animation: float-slow 4s ease-in-out infinite;
+    }
+    .tap-highlight-transparent {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-slate-800 min-h-screen flex flex-col justify-between selection:bg-brand-yellow selection:text-slate-900 tap-highlight-transparent">
+
+  <!-- 頂部視覺裝飾與標題區 -->
+  <header class="w-full pt-8 pb-4 px-4 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-bold tracking-wide mb-3 shadow-sm border border-amber-200">
+      <i class="fa-solid fa-sparkles text-brand-orange"></i>
+      <span>信義國小 ‧ 親子資訊天地</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 tracking-tight leading-tight">
+      探索科技 <span class="text-brand-orange">‧</span> 快樂成長
+    </h1>
+    <p class="mt-2 text-slate-600 text-base sm:text-lg max-w-md mx-auto">
+      歡迎來到親子資訊入口！請選擇您需要的服務：
+    </p>
+  </header>
+
+  <main class="max-w-5xl w-full mx-auto px-4 py-4 sm:py-8 flex-grow flex items-center justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
+
+      <!-- 卡片 1：資訊服務與教學（即將推出） -->
+      <section class="bg-white rounded-3xl p-7 sm:p-9 shadow-playful hover:shadow-playful-hover transition-all duration-300 border-2 border-slate-100 flex flex-col justify-between relative overflow-hidden group">
+        <!-- 狀態標籤 -->
+        <div class="absolute top-5 right-5">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-600 border border-amber-200">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            籌備中 ‧ 敬請期待
+          </span>
+        </div>
+
+        <div>
+          <!-- 圖示區 -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-sky-50 text-brand-blue flex items-center justify-center text-3xl sm:text-4xl mb-6 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-3">
+            親子資訊教學服務
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-sm sm:text-base mb-6">
+            精彩的兒童程式邏輯、數位素養與科技實作教材正在密集規劃中，近期即將隆重開張，陪伴孩子一起輕鬆探索數位世界！
+          </p>
+        </div>
+
+        <!-- 提示按鈕 -->
+        <div class="pt-4">
+          <button 
+            type="button"
+            id="notifyBtn"
+            class="w-full py-4 px-6 rounded-2xl bg-slate-100 text-slate-500 font-bold text-base flex items-center justify-center gap-2 cursor-pointer hover:bg-slate-200 transition-colors border border-slate-200"
+            aria-label="查看資訊服務開張提醒"
+          >
+            <i class="fa-regular fa-clock"></i>
+            <span>即將開張，點擊查看詳情</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 卡片 2：活動線上報名（直連 Google Apps Script） -->
+      <section class="bg-white rounded-3xl p-7 sm:p-9 shadow-playful hover:shadow-playful-hover transition-all duration-300 border-2 border-emerald-400 flex flex-col justify-between relative overflow-hidden group">
+        <!-- 狀態標籤 -->
+        <div class="absolute top-5 right-5">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            即時線上報名
+          </span>
+        </div>
+
+        <div>
+          <!-- 圖示區 -->
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-emerald-50 text-brand-green flex items-center justify-center text-3xl sm:text-4xl mb-6 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-clipboard-check"></i>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-3">
+            信義國小活動報名
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-sm sm:text-base mb-6">
+            提供信義國小各類親子營隊、校園活動與工作坊的線上報名系統。點擊按鈕即可立即開啟官方報名表單填寫！
+          </p>
+        </div>
+
+        <!-- 報名 CTA 按鈕 -->
+        <div class="pt-4">
+          <a 
+            href="https://script.google.com/macros/s/AKfycby370u27cE9eGelPF6fXnuPHvb7A0IJpuLXRD7atJLM2K3Yb3y20q4VUmdoxbSq2Nhz/exec" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            aria-label="前往信義國小活動線上報名系統 (另開新視窗)"
+          >
+            <span>立即前往活動報名</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 互動彈出視窗 (Modal)：替代 alert()，提供親切的即將開張提示 -->
+  <div id="infoModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-7 shadow-2xl text-center transform scale-95 transition-transform duration-200" id="modalBox">
+      <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-600 mx-auto flex items-center justify-center text-2xl mb-4">
+        <i class="fa-solid fa-hammer"></i>
+      </div>
+      <h3 id="modalTitle" class="text-xl font-bold text-slate-800 mb-2">好內容正在路上！</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-6">
+        我們正在緊鑼密鼓為孩子準備最生動有趣的資訊教學與學習資源，敬請鎖定本站，開張後將第一時間在此更新連結！
+      </p>
+      <button 
+        type="button" 
+        id="closeModalBtn" 
+        class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-colors"
+      >
+        我知道了
+      </button>
+    </div>
+  </div>
+
+  <!-- 簡約頁尾 -->
+  <footer class="w-full py-6 text-center text-xs sm:text-sm text-slate-500 border-t border-amber-200/50 bg-amber-50/50 px-4">
+    <p class="font-medium text-slate-600 mb-1">校址：新北市板橋區四川路二段245巷60 號｜總機：(02)8966-7817</p>
+    <p>© 2026 信義國小親子資訊服務 ‧ 安心學習與線上服務平台</p>
+  </footer>
+
+  <!-- 簡易互動邏輯 -->
+  <script>
+    const notifyBtn = document.getElementById('notifyBtn');
+    const infoModal = document.getElementById('infoModal');
+    const modalBox = document.getElementById('modalBox');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function openModal() {
+      infoModal.classList.remove('hidden');
+      setTimeout(() => {
+        infoModal.classList.remove('opacity-0');
+        modalBox.classList.remove('scale-95');
+        modalBox.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeModal() {
+      infoModal.classList.add('opacity-0');
+      modalBox.classList.remove('scale-100');
+      modalBox.classList.add('scale-95');
+      setTimeout(() => {
+        infoModal.classList.add('hidden');
+      }, 200);
+    }
+
+    notifyBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // 點擊遮罩外圍關閉視窗
+    infoModal.addEventListener('click', (e) => {
+      if (e.target === infoModal) {
+        closeModal();
+      }
+    });
+
+    // 支援鍵盤 Esc 關閉
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !infoModal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
