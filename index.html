@@ -111,41 +111,42 @@
         </div>
       </section>
 
-      <!-- 卡片 2：活動線上報名（直連 Google Apps Script） -->
+      <!-- 卡片 2：活動專區（線上報名與錄取名單查詢） -->
       <section class="bg-white rounded-3xl p-7 sm:p-9 shadow-playful hover:shadow-playful-hover transition-all duration-300 border-2 border-emerald-400 flex flex-col justify-between relative overflow-hidden group">
         <!-- 狀態標籤 -->
         <div class="absolute top-5 right-5">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            即時線上報名
+            線上熱烈開放中
           </span>
         </div>
 
         <div>
           <!-- 圖示區 -->
           <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-emerald-50 text-brand-green flex items-center justify-center text-3xl sm:text-4xl mb-6 group-hover:scale-105 transition-transform duration-300">
-            <i class="fa-solid fa-clipboard-check"></i>
+            <i class="fa-solid fa-calendar-check"></i>
           </div>
 
           <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-3">
-            信義國小活動報名
+            活動專區
           </h2>
           <p class="text-slate-600 leading-relaxed text-sm sm:text-base mb-6">
-            提供信義國小各類親子營隊、校園活動與工作坊的線上報名系統。點擊按鈕即可立即開啟官方報名表單填寫！
+            提供信義國小各類親子營隊、校園活動與工作坊的線上報名服務，並可即時查詢各項活動之最新錄取名單與名額狀況！
           </p>
         </div>
 
-        <!-- 報名 CTA 按鈕 -->
+        <!-- 功能按鈕：活動報名與錄取查詢合一 -->
         <div class="pt-4">
           <a 
             href="https://script.google.com/macros/s/AKfycby370u27cE9eGelPF6fXnuPHvb7A0IJpuLXRD7atJLM2K3Yb3y20q4VUmdoxbSq2Nhz/exec" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-            aria-label="前往信義國小活動線上報名系統 (另開新視窗)"
+            class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            aria-label="前往信義國小活動報名與錄取查詢系統 (另開新視窗)"
           >
-            <span>立即前往活動報名</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+            <i class="fa-solid fa-clipboard-check text-lg"></i>
+            <span>活動報名與錄取查詢</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80 ml-1"></i>
           </a>
         </div>
       </section>
@@ -170,6 +171,46 @@
       >
         我知道了
       </button>
+    </div>
+  </div>
+
+  <!-- 互動彈出視窗 2 (Modal)：錄取名單查詢提示與說明 -->
+  <div id="queryModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" role="dialog" aria-modal="true" aria-labelledby="queryModalTitle">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl text-center transform scale-95 transition-transform duration-200" id="queryModalBox">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center text-2xl mb-4">
+        <i class="fa-solid fa-clipboard-check"></i>
+      </div>
+      <h3 id="queryModalTitle" class="text-xl font-bold text-slate-800 mb-2">活動錄取名單查詢</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-5">
+        信義國小各梯次營隊與活動錄取結果陸續審核公布中，您可直接前往報名系統確認狀態，或留意最新校園公告。
+      </p>
+      
+      <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-6 text-left text-xs sm:text-sm text-emerald-900 space-y-2">
+        <p class="flex items-center gap-2 font-bold text-emerald-800">
+          <i class="fa-solid fa-circle-info text-emerald-600"></i> 查詢小叮嚀：
+        </p>
+        <p class="leading-relaxed">1. 各項活動報名截止後，約 3 個工作天內公告錄取名單。</p>
+        <p class="leading-relaxed">2. 若需確認個人報名序號，亦可開啟報名系統檢視紀錄。</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a 
+          href="https://script.google.com/macros/s/AKfycby370u27cE9eGelPF6fXnuPHvb7A0IJpuLXRD7atJLM2K3Yb3y20q4VUmdoxbSq2Nhz/exec" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+        >
+          <span>前往系統確認</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+        <button 
+          type="button" 
+          id="closeQueryModalBtn" 
+          class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition-colors"
+        >
+          關閉視窗
+        </button>
+      </div>
     </div>
   </div>
 
@@ -214,10 +255,44 @@
       }
     });
 
-    // 支援鍵盤 Esc 關閉
+    // 錄取名單查詢彈窗互動邏輯
+    const queryBtn = document.getElementById('queryBtn');
+    const queryModal = document.getElementById('queryModal');
+    const queryModalBox = document.getElementById('queryModalBox');
+    const closeQueryModalBtn = document.getElementById('closeQueryModalBtn');
+
+    function openQueryModal() {
+      queryModal.classList.remove('hidden');
+      setTimeout(() => {
+        queryModal.classList.remove('opacity-0');
+        queryModalBox.classList.remove('scale-95');
+        queryModalBox.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeQueryModal() {
+      queryModal.classList.add('opacity-0');
+      queryModalBox.classList.remove('scale-100');
+      queryModalBox.classList.add('scale-95');
+      setTimeout(() => {
+        queryModal.classList.add('hidden');
+      }, 200);
+    }
+
+    if (queryBtn) queryBtn.addEventListener('click', openQueryModal);
+    if (closeQueryModalBtn) closeQueryModalBtn.addEventListener('click', closeQueryModal);
+
+    queryModal.addEventListener('click', (e) => {
+      if (e.target === queryModal) {
+        closeQueryModal();
+      }
+    });
+
+    // 支援鍵盤 Esc 關閉任一彈出視窗
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !infoModal.classList.contains('hidden')) {
-        closeModal();
+      if (e.key === 'Escape') {
+        if (!infoModal.classList.contains('hidden')) closeModal();
+        if (!queryModal.classList.contains('hidden')) closeQueryModal();
       }
     });
   </script>
